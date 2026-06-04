@@ -1,0 +1,151 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Shaan & Aisha | Forever</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+background:linear-gradient(180deg,#05060d,#0d1020);
+color:white;font-family:system-ui,sans-serif;overflow-x:hidden;
+}
+.stars,.stars:after{
+position:fixed;inset:0;content:"";
+background-image:
+radial-gradient(2px 2px at 20px 30px,#fff,transparent),
+radial-gradient(2px 2px at 80px 120px,#fff,transparent),
+radial-gradient(1px 1px at 160px 60px,#fff,transparent),
+radial-gradient(2px 2px at 220px 180px,#fff,transparent);
+background-size:250px 250px;
+opacity:.45;
+animation:float 25s linear infinite;
+}
+@keyframes float{from{transform:translateY(0)}to{transform:translateY(-250px)}}
+.hero{
+min-height:100vh;display:flex;flex-direction:column;
+justify-content:center;align-items:center;text-align:center;padding:20px;
+}
+h1{font-size:4rem}
+.glass{
+background:rgba(255,255,255,.08);
+backdrop-filter:blur(12px);
+border-radius:25px;
+padding:25px;
+margin:20px auto;
+max-width:850px;
+}
+.btn{
+padding:14px 28px;border:none;border-radius:999px;
+cursor:pointer;font-size:1rem;
+}
+.section{padding:60px 20px;text-align:center}
+.count{font-size:2rem;font-weight:bold}
+.type{border-right:2px solid white;display:inline-block;white-space:nowrap;overflow:hidden}
+.memory{margin:15px 0}
+footer{padding:60px 20px;text-align:center}
+</style>
+</head>
+<body>
+
+<div class="stars"></div>
+
+<section class="hero">
+<h1>Shaan ❤️ Aisha</h1>
+<br>
+<div class="type" id="typing"></div>
+<br><br>
+<button class="btn" onclick="document.getElementById('content').scrollIntoView({behavior:'smooth'})">
+Open Our Story
+</button>
+</section>
+
+<div id="content">
+
+<section class="section">
+<div class="glass">
+<h2>A Letter From The Future</h2><br>
+<p>
+If somehow this message reached us years later,
+I hope we're still laughing together, creating memories,
+and choosing each other every single day.
+</p>
+</div>
+</section>
+
+<section class="section">
+<div class="glass">
+<h2>Our Journey</h2><br>
+<div class="count" id="counter"></div>
+<p>Together since 09 July 2025</p>
+</div>
+</section>
+
+<section class="section">
+<div class="glass">
+<h2>Reasons I'll Always Choose You</h2>
+<div class="memory">✨ Your smile</div>
+<div class="memory">✨ Your kindness</div>
+<div class="memory">✨ The comfort you bring</div>
+<div class="memory">✨ Every memory we create together</div>
+</div>
+</section>
+
+<section class="section">
+<div class="glass">
+<h2>Secret Message</h2><br>
+<button class="btn" onclick="reveal()">Unlock ❤️</button>
+<p id="secret" style="display:none;margin-top:20px;">
+No matter how far life takes us,
+you'll always be my favorite chapter.
+— Shaan
+</p>
+</div>
+</section>
+
+<section class="section">
+<div class="glass">
+<h2>Music</h2>
+<p>🎵 Wanna Be Yours — Arctic Monkeys</p>
+<p>Add your MP3 file later for autoplay/background music.</p>
+</div>
+</section>
+
+<footer>
+<h2>In every version of my life,<br>I'd still find my way back to you.</h2>
+<br>
+<p>Forever Yours, Shaan ❤️</p>
+</footer>
+
+</div>
+
+<script>
+const text="A story that began on 09 July 2025... and never ends.";
+let i=0;
+function type(){
+ if(i<text.length){
+  document.getElementById("typing").textContent+=text.charAt(i);
+  i++; setTimeout(type,60);
+ }
+}
+type();
+
+const start=new Date("2025-07-09T00:00:00");
+function update(){
+ let diff=new Date()-start;
+ let days=Math.floor(diff/86400000);
+ let years=Math.floor(days/365.25);
+ let rem=days-Math.floor(years*365.25);
+ document.getElementById("counter").innerHTML=years+" Years • "+rem+" Days";
+}
+update();
+setInterval(update,1000);
+
+function reveal(){
+ document.getElementById("secret").style.display="block";
+}
+</script>
+
+</body>
+</html>
